@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+portafolio.db
+*.mp4
+*.MP4

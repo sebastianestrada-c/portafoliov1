@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="detalle-proyecto" style="max-width: 900px; margin: 4rem auto; padding: 0 1.5rem;">
+    <!-- Botón de regreso -->
+    <a href="/{{ proyecto['categoria_principal'] }}" style="color: var(--accent-terracota); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">
+        ← Volver a {{ proyecto['categoria_principal'] }}
+    </a>
+
+    <h1 style="font-size: 3.5rem; margin: 1.5rem 0 0.5rem 0; letter-spacing: -1px;">{{ proyecto['titulo'] }}</h1>
+    <p style="opacity: 0.6; font-size: 1.1rem; margin-bottom: 3rem;">Categoría: {{ proyecto['subcategoria'] }}</p>
+
+   <div style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 3rem;">
+    
+    <!-- Escenario 1: ¿Tiene PDF? -->
+    {% if proyecto['archivo_pdf'] %}
+        <iframe src="{{ proyecto['archivo_pdf'] }}" width="100%" height="700px" style="border: none; background-color: white;"></iframe>
+    
+    <!-- Escenario 2: ¿Tiene Video de YouTube? -->
+    {% elif proyecto['video_url'] %}
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+            <iframe src="{{ proyecto['video_url'] }}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+    <!-- Escenario 3: Si no tiene PDF ni Video, muestra la foto normal -->
+    {% else %}
+        <img src="{{ proyecto['imagen_url'] }}" alt="{{ proyecto['titulo'] }}" style="width: 100%; height: auto; display: block;">
+    {% endif %}
+
+</div>
+
+    <p style="font-size: 1.2rem; line-height: 1.8; opacity: 0.8; max-width: 700px;">
+        {{ proyecto['descripcion'] }}
+    </p>
+</section>
+{% endblock %}

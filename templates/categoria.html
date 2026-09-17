@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="portfolio-section">
+    <!-- Usamos el filtro 'capitalize' de Jinja para que la primera letra sea mayúscula -->
+    <h2 class="section-title">{{ nombre_categoria | capitalize }}</h2>
+
+<div class="category-ribbon">
+    <!-- El botón "Todo" siempre aparece -->
+    <a href="/{{ nombre_categoria }}" class="ribbon-item {% if not filtro_actual %}active{% endif %}">Todo</a>
+    
+    <!-- Pestañas para Fotografía -->
+    {% if nombre_categoria == 'fotografia' %}
+        <a href="/{{ nombre_categoria }}?filtro=retrato" class="ribbon-item {% if filtro_actual == 'retrato' %}active{% endif %}">Retrato</a>
+        <a href="/{{ nombre_categoria }}?filtro=naturaleza" class="ribbon-item {% if filtro_actual == 'naturaleza' %}active{% endif %}">Naturaleza</a>
+        <a href="/{{ nombre_categoria }}?filtro=social" class="ribbon-item {% if filtro_actual == 'social' %}active{% endif %}">Social</a>
+        <a href="/{{ nombre_categoria }}?filtro=experimental" class="ribbon-item {% if filtro_actual == 'experimental' %}active{% endif %}">Experimental</a>
+    
+    <!-- Pestañas para Audiovisual -->
+    {% elif nombre_categoria == 'audiovisual' %}
+        <a href="/{{ nombre_categoria }}?filtro=redes" class="ribbon-item {% if filtro_actual == 'redes' %}active{% endif %}">Redes Sociales</a>
+        <a href="/{{ nombre_categoria }}?filtro=color" class="ribbon-item {% if filtro_actual == 'color' %}active{% endif %}">Color Grading</a>
+        <a href="/{{ nombre_categoria }}?filtro=otros" class="ribbon-item {% if filtro_actual == 'otros' %}active{% endif %}">Otros</a>
+    
+    <!-- Pestañas para Diseño -->
+    {% elif nombre_categoria == 'diseno' %}
+        <a href="/{{ nombre_categoria }}?filtro=branding" class="ribbon-item {% if filtro_actual == 'branding' %}active{% endif %}">Branding</a>
+        <a href="/{{ nombre_categoria }}?filtro=editorial" class="ribbon-item {% if filtro_actual == 'editorial' %}active{% endif %}">Editorial</a>
+        <a href="/{{ nombre_categoria }}?filtro=redes" class="ribbon-item {% if filtro_actual == 'redes' %}active{% endif %}">Redes Sociales</a>
+        <a href="/{{ nombre_categoria }}?filtro=otros" class="ribbon-item {% if filtro_actual == 'otros' %}active{% endif %}">Otros</a>
+    {% endif %}
+</div>
+
+    <!-- El bucle for que crea la galería -->
+    <div class="galeria-grid">
+        {% for proyecto in lista_proyectos %}
+        <a href="/proyecto/{{ proyecto['id'] }}" class="galeria-item">
+            <div class="img-wrapper">
+                <!-- Por ahora usamos el recuadro gris con el efecto hover que ya conoces -->
+                <img src="{{ proyecto['imagen_url'] }}" alt="{{ proyecto['titulo'] }}" class="placeholder-img" style="width: 100%; height: 100%; object-fit: cover;">
+</div>
+            <div class="item-info">
+                <h3>{{ proyecto['titulo'] }}</h3>
+                <span class="item-sub">{{ proyecto['subcategoria'] }}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

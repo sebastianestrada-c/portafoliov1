@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero">
+      
+    <span class="hero-tag">Sebastián Estrada</span>
+    <h1 class="hero-title">{{ subtitulo_hero }}</h1>
+    <p class="hero-description">Diseñador y comunicador visual</p>
+    <a href="#galeria" class="hero-btn">Explorar trabajos</a>
+
+    
+</section>
+
+<section id="galeria" class="home-zigzag">
+
+    <!-- Bloque 1: Fotografía (Texto Izq, Imagen Der) -->
+    <a href="/fotografia" class="zigzag-row">
+        <div class="zigzag-texto">
+            <h2>Fotografía</h2>
+            <hr class="linea-deco">
+            <p>Retrato, producto, naturaleza, urbana y experimental.</p>
+        </div>
+        <div class="zigzag-img">
+            <img src="{{ url_for('static', filename='img/Portadas exteriores/Fotografía.jpg') }}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </a>
+
+    <!-- Bloque 2: Audiovisual (Imagen Izq, Texto Der gracias al "reverse") -->
+    <a href="/audiovisual" class="zigzag-row reverse">
+        <div class="zigzag-texto">
+            <h2>Producción Audiovisual</h2>
+            <hr class="linea-deco">
+            <p>Edición, postproducción, colorimetría y narrativa visual.</p>
+        </div>
+        <div class="zigzag-img">
+            <img src="{{ url_for('static', filename='img/Portadas exteriores/Audiovisual.jpg') }}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </a>
+
+    <!-- Bloque 3: Diseño (Texto Izq, Imagen Der) -->
+    <a href="/diseno" class="zigzag-row">
+        <div class="zigzag-texto">
+            <h2>Diseño</h2>
+            <hr class="linea-deco">
+            <p>Conceptualización de personajes, identidad gráfica y comunicación visual.</p>
+        </div>
+        <div class="zigzag-img">
+            <img src="{{ url_for('static', filename='img/Portadas exteriores/Diseño.jpg') }}" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+    </a>
+
+</section>
+
+{% endblock %}

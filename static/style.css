@@ -1,0 +1,387 @@
+/* =============================================
+   VARIABLES GLOBALES (CSS CUSTOM PROPERTIES)
+   ============================================= */
+:root {
+    --bg-warm: #22292c;          /* Color de fondo: gris oscuro azulado */
+    --text-primary: #ece7e1;     /* Color del texto: blanco roto/cálido */
+    --accent-terracota: #C86D51; /* Color de acento: naranja terracota */
+}
+/* 
+   ¿Qué hace :root?
+   - Es el elemento <html>, la raíz del documento
+   - Las variables declaradas aquí están disponibles en TODO el CSS
+   - Ventaja: Cambias el color UNA VEZ y se actualiza en todos lados
+*/
+
+
+/* =============================================
+   ESTILOS DEL BODY (FONDO Y TEXTO GLOBAL)
+   ============================================= */
+body {
+    margin: 0;                   /* Elimina el margen por defecto del navegador (8px) */
+    padding: 0;                  /* Elimina el relleno por defecto */
+    font-family: 'Roboto', sans-serif;  /* Fuente Roboto, con fallback sans-serif */
+    background-color: var(--bg-warm);   /* Fondo oscuro de la variable */
+    color: var(--text-primary);         /* Texto blanco roto de la variable */
+}
+/* 
+   ¿Qué hace body?
+   - Es el elemento que contiene TODO el contenido visible de la página
+   - margin:0 y padding:0 eliminan el espacio en blanco alrededor
+   - background-color y color se aplican a TODOS los elementos hijos (heredan)
+*/
+
+
+/* =============================================
+   NAVEGACIÓN (BARRA DE MENÚ)
+   ============================================= */
+.navbar {
+    display: flex;               /* Activa Flexbox (layout moderno y flexible) */
+    justify-content: space-between; /* Logo a la izq, enlaces a la der */
+    align-items: center;         /* Centra verticalmente todos los elementos */
+    padding: 1.25rem 3rem;       /* Padding superior/inferior: 20px | Izq/der: 48px */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25); /* Línea sutil abajo */
+}
+/* 
+   ¿Qué hace display: flex?
+   - Convierte .navbar en un contenedor flexible
+   - Sus hijos (nav-logo y nav-links) se alinean en fila horizontal
+   - justify-content: space-between los separa (uno a cada extremo)
+   - align-items: center los centra verticalmente
+   - border-bottom: crea una línea casi invisible (8% de opacidad)
+*/
+
+
+.nav-logo {
+    font-weight: 700;            /* Negrita (700) */
+    font-size: 1.1rem;           /* Tamaño de fuente: 17.6px (1.1 × 16px) */
+    color: var(--text-primary);  /* Color blanco roto */
+    text-decoration: none;       /* Elimina el subrayado del enlace */
+    letter-spacing: -0.5px;      /* Reduce el espacio entre letras (más juntas) */
+}
+/* 
+   ¿Qué hace .nav-logo?
+   - Estiliza el texto "(Anteriormente habia un texto (Nada))" en la barra de navegación
+   - font-weight: 700 lo hace negrita para destacar
+   - letter-spacing: -0.5px aprieta las letras para un look moderno
+*/
+
+
+.nav-links a {
+    margin-left: 3rem;           /* Espacio de 32px entre cada enlace */
+    color: var(--text-primary);  /* Color blanco roto */
+    text-decoration: none;       /* Sin subrayado */
+    font-size: 0.9rem;           /* Tamaño: 14.4px (más pequeño que el logo) */
+    opacity: 0.75;               /* 75% de opacidad (un poco transparente) */
+    transition: opacity 0.2s ease; /* Animación suave de 0.2s al cambiar opacidad */
+}
+/* 
+   ¿Qué hace .nav-links a?
+   - Selecciona TODOS los <a> dentro de .nav-links
+   - margin-left: 2rem separa los enlaces entre sí
+   - opacity: 0.75 los hace menos llamativos que el logo
+   - transition: hace que el hover sea suave y no brusco
+*/
+
+
+.nav-links a:hover {
+    opacity: 1;                  /* Al pasar el mouse, se vuelven 100% opacos */
+}
+/* 
+   ¿Qué hace :hover?
+   - Es un pseudo-selector que se activa cuando el mouse está encima
+   - opacity: 1 revierte la transparencia a completamente visible
+   - El transition: de arriba hace que este cambio sea animado
+*/
+
+
+/* =============================================
+   SECCIÓN HERO (CONTENIDO PRINCIPAL)
+   ============================================= */
+.hero {
+    text-align: center;          /* Centra horizontalmente TODO el contenido */
+    padding: 6rem 1.5rem;        /* Arriba/abajo: 96px | Izq/der: 24px */
+    max-width: 750px;            /* Ancho máximo para no estirarse en pantallas grandes */
+    margin: 0 auto;              /* Centra horizontalmente (.hero) en la página */
+}
+/* 
+   ¿Qué hace .hero?
+   - Contiene el título, descripción y botón
+   - text-align: center centra todo el texto e inline-block dentro
+   - max-width: 750px evita que se vea demasiado ancho en monitores grandes
+   - margin: 0 auto lo centra horizontalmente (izquierda y derecha automáticos)
+*/
+
+
+.hero-tag {
+    display: inline-block;       /* Permite aplicar padding y margin (no es bloque completo) */
+    font-size: 0.8rem;           /* Tamaño: 12.8px (pequeño) */
+    text-transform: uppercase;   /* Convierte TODO a MAYÚSCULAS */
+    letter-spacing: 2px;         /* Espacia las letras 2px (look elegante) */
+    color: var(--accent-terracota); /* Color naranja terracota */
+    margin-bottom: -1rem;         /* Separación de 16px con el título */
+    font-weight: 700;            /* Negrita */
+}
+/* 
+   ¿Qué hace .hero-tag?
+   - Estiliza "Sebastian Estrada" como uSna etiqueta pequeña
+   - text-transform: uppercase lo pone todo en mayúsculas automáticamente
+   - letter-spacing: 2px le da un look más "premium"
+   - color: var(--accent-terracota) usa el color naranja para destacar
+*/
+
+
+.hero-title {
+    font-size: 6rem;             /* Tamaño ENORME: 96px (6 × 16px) */
+    line-height: 1.1;            /* Interlineado: 105.6px (más compacto) */
+    margin: 0 0 -1rem 0;         /* Top:0 | Der:0 | Bottom: -16px | Izq:0 */
+    letter-spacing: 1px;        /* Letras más juntas (look moderno) */
+}
+/* 
+   ¿Qué hace .hero-title?
+   - Estiliza "Portafolio"
+   - font-size: 6rem lo hace IMPONENTE (muy grande)
+   - line-height: 1.1 es más compacto que el default (1.5)
+   - margin: 0 0 -1rem 0 es TRUCO: margen negativo abajo para acercar el tag
+   - letter-spacing: -1px aprieta las letras para un look más profesional
+*/
+
+
+.hero-description {
+    font-size: 1.15rem;          /* Tamaño: 18.4px (ligeramente más grande que texto normal) */
+    opacity: 0.8;                /* 80% de opacidad (más suave que el título) */
+    margin-bottom: 2.5rem;       /* Separación de 40px con el botón */
+}
+/* 
+   ¿Qué hace .hero-description?
+   - Estiliza "Exploración visual, dirección de arte y captura minimalista."
+   - opacity: 0.8 lo hace menos intenso que el título (jerarquía visual)
+   - margin-bottom: 2.5rem da espacio antes del botón
+*/
+
+
+.hero-btn {
+    display: inline-block;       /* Permite padding y margin sin ocupar todo el ancho */
+    padding: 0.8rem 2rem;        /* Relleno interno: 12.8px arriba/abajo | 32px izq/der */
+    background-color: var(--text-primary); /* Fondo blanco roto */
+    color: var(--bg-warm);       /* Texto oscuro (el del fondo) - ¡Contraste! */
+    text-decoration: none;       /* Sin subrayado */
+    border-radius: 980px;        /* Bordes super redondeados (efecto píldora) */
+    font-size: 0.9rem;           /* Tamaño: 14.4px */
+    font-weight: 500;            /* Semi-negrita (500) */
+    transition: transform 0.2s ease; /* Animación suave al hacer hover */
+}
+/* 
+   ¿Qué hace .hero-btn?
+   - Estiliza "Explorar trabajos" como un botón
+   - background-color: var(--text-primary) = fondo blanco
+   - color: var(--bg-warm) = texto oscuro (invierte los colores de la página)
+   - border-radius: 980px es un número enorme que crea un óvalo/píldora
+   - transition: transform prepara la animación del hover
+*/
+
+
+.hero-btn:hover {
+    transform: scale(1.03);      /* Al pasar el mouse, crece un 3% */
+}
+/* 
+   ¿Qué hace .hero-btn:hover?
+   - transform: scale(1.03) amplía el botón un 3% al pasar el mouse
+   - El transition: de arriba hace que este cambio sea suave y animado
+   - Efecto: el botón "respira" o "crece" ligeramente (feedback visual)
+*/
+/* =============================================
+   CATEGORÍAS HOME (LAS TRES PUERTAS)
+   ============================================= */
+/* =============================================
+   SECCIÓN ZIG-ZAG (HOME)
+   ============================================= */
+   
+.home-zigzag {
+    display: flex;
+    flex-direction: column;
+    gap: 8rem; /* Mucho respiro visual entre secciones */
+    max-width: 1000px;
+    margin: 8rem auto;
+    padding: 0 2rem;
+}
+
+.zigzag-row {
+    display: flex;
+    align-items: center; /* Centra el texto verticalmente respecto a la foto */
+    justify-content: space-between;
+    gap: 4rem;
+    text-decoration: none; /* Quitamos el subrayado del enlace */
+    color: var(--text-primary);
+}
+
+.zigzag-row.reverse {
+    flex-direction: row-reverse; /* Magia: invierte los lados */
+}
+
+.zigzag-texto {
+    flex: 1; /* Toma exactamente la mitad del espacio */
+}
+
+.zigzag-texto h2 {
+    font-size: 3.5rem;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -1px;
+    transition: color 0.3s ease;
+}
+
+.linea-deco {
+    border: none;
+    border-top: 2px solid var(--text-primary);
+    width: 40px;
+    margin: 0 0 1.5rem 0;
+    transition: width 0.3s ease;
+}
+
+.zigzag-texto p {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    line-height: 1.6;
+}
+
+.zigzag-img {
+    flex: 1; /* Toma la otra mitad del espacio */
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 8px;
+    overflow: hidden; /* Clave para el zoom */
+}
+
+.placeholder-img {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.08); /* Fondo temporal */
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Interacciones (Hover) */
+.zigzag-row:hover .placeholder-img {
+    transform: scale(1.04);
+}
+.zigzag-row:hover .linea-deco {
+    width: 80px; /* La línea crece al pasar el mouse */
+    border-color: var(--accent-terracota);
+}
+
+/* =============================================
+   GALERÍA DE CATEGORÍA (COLLAGE)
+   ============================================= */
+.galeria-grid {
+    display: grid;
+    /* Magia responsiva: columnas de min 320px que se estiran si sobra espacio */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 2rem;
+}
+
+.galeria-item {
+    text-decoration: none;
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.img-wrapper {
+    width: 100%;
+    aspect-ratio: 4/5; /* Formato de retrato elegante */
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.item-info h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+
+.item-sub {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Reutilizamos el efecto de hover en las imágenes */
+.galeria-item:hover .placeholder-img {
+    transform: scale(1.05);
+}
+
+/* =============================================
+   CINTILLA DE SUBCATEGORÍAS (TABS)
+   ============================================= */
+.category-ribbon {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+.ribbon-item {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    text-decoration: none; 
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.ribbon-item.active, .ribbon-item:hover {
+    opacity: 1;
+    font-weight: 700;
+}
+
+/* Cintilla de Subcategorías */
+.portfolio-section { padding: 4rem 1.5rem; max-width: 1100px; margin: 0 auto; }
+.section-title { font-size: 3rem; margin-bottom: 1.5rem; letter-spacing: -1px; }
+
+.category-ribbon {
+    display: flex;
+    gap: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+}
+
+.ribbon-item {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    text-decoration: none; /* Quitamos raya de enlace */
+    opacity: 0.4;
+    transition: all 0.3s ease;
+}
+
+.ribbon-item.active, .ribbon-item:hover {
+    opacity: 1;
+    font-weight: 700;
+}
+
+/* =============================================
+   GALERÍA - IMÁGENES
+   ============================================= */
+.placeholder-img {
+    width: 100%;
+    height: 300px;           /* Altura fija para todas */
+    background-color: #2a2a2a;
+    background-size: cover;  /* ← La imagen cubre todo el contenedor */
+    background-position: center; /* ← Centra la imagen */
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Para que cada imagen tenga su propia URL */
+.img-wrapper {
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.img-wrapper:hover .placeholder-img {
+    transform: scale(1.05);
+}

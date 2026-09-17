@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="max-width: 1000px; margin: 4rem auto; padding: 0 2rem; display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+    
+    <!-- Columna de Imagen -->
+    <div style="flex: 1; min-width: 300px;">
+        <div style="width: 100%; aspect-ratio: 3/4; background-color: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
+            <!-- Columna de Imagen -->
+<div style="flex: 1; min-width: 300px;">
+    <div style="width: 100%; aspect-ratio: 3/4; background-color: rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden;">
+        
+        <!-- Tu foto conectada: -->
+        <img src="{{ url_for('static', filename='img/fotografia/retrato/perfil.jpg') }}" style="width: 100%; height: 100%; object-fit: cover;">
+        
+    </div>
+</div>
+            <!-- <img src="{{ url_for('static', filename='img/mi_foto.jpg') }}" style="width: 100%; height: 100%; object-fit: cover;"> -->
+        </div>
+    </div>
+
+    <!-- Columna de Texto -->
+    <div style="flex: 1; min-width: 300px;">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; letter-spacing: -1px;">Sebastián Estrada</h1>
+        <h2 style="font-size: 1.2rem; color: var(--accent-terracota); margin-bottom: 2rem;">Diseñador & Comunicador Visual</h2>
+        
+        <p style="opacity: 0.8; line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">
+            Egresado por parte de la UNAM. Me especializo en multimedia, sobretodo en fotografía y producción audiovisual.
+            Me gusta estar en constante aprendizaje y enfrentarme a nuevos retos para elevar mi nivel.
+        </p>
+
+        <!-- Redes Sociales Integradas -->
+        <div style="margin-top: 3rem; display: flex; gap: 1.5rem;">
+            <a href="https://www.instagram.com/photoashne/" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--accent-terracota); padding-bottom: 2px;">Instagram</a>
+            <a href="URL_DE_TU_BEHANCE_O_YOUTUBE" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 700; border-bottom: 1px solid var(--accent-terracota); padding-bottom: 2px;">YouTube</a>
+        </div>
+    </div>
+
+</section>
+{% endblock %}

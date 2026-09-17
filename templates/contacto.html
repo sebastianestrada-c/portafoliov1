@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section style="max-width: 600px; margin: 4rem auto; padding: 0 1.5rem;">
+    <h1 style="font-size: 3rem; margin-bottom: 1rem; letter-spacing: -1px;">Contacto</h1>
+    <p style="opacity: 0.7; margin-bottom: 2.5rem;">Hablemos sobre tu próximo proyecto visual o fotográfico.</p>
+
+    {% if confirmacion %}
+        <div style="background-color: rgba(200, 109, 81, 0.2); border: 1px solid var(--accent-terracota); padding: 1rem; border-radius: 4px; margin-bottom: 2rem;">
+            <p style="margin: 0; color: var(--text-primary);">{{ confirmacion }}</p>
+        </div>
+    {% endif %}
+
+    <form action="/contacto" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Nombre</label>
+            <input type="text" name="nombre" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--text-primary); box-sizing: border-box;">
+        </div>
+
+        <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Correo electrónico</label>
+            <input type="email" name="email" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--text-primary); box-sizing: border-box;">
+        </div>
+
+        <div>
+            <label style="display: block; margin-bottom: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Mensaje</label>
+            <textarea name="mensaje" rows="5" required style="width: 100%; padding: 0.8rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: var(--text-primary); box-sizing: border-box; resize: vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="hero-btn" style="border: none; cursor: pointer; align-self: flex-start; margin-top: 1rem;">
+            Enviar mensaje
+        </button>
+    </form>
+</section>
+{% endblock %}
